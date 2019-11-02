@@ -1,0 +1,71 @@
+(function(angular){
+	angular.module('module.service').service('PLACEHODER',[
+		'$resource',
+		'$q',
+		function($resource,$q){
+			var PLACEHODER = $resource(PLACEHODERURL+'/:_id',{_id:'@_id'});
+			return {
+				getList: function(params){
+					var deferred = $q.defer();//不可抽出
+					PLACEHODER.get(params,
+						function(answer){
+							deferred.resolve(answer.data);
+						},
+						function(error){
+							deferred.resolve(error);
+						}
+					);
+					return deferred.promise;
+				},
+				getById: function(id){
+					var deferred = $q.defer();//不可抽出
+					PLACEHODER.get({_id: id},
+						function(answer){
+							deferred.resolve(answer.data);
+						},
+						function(error){
+							deferred.resolve(error);
+						}
+					);
+					return deferred.promise;
+				},
+				create: function(obj){
+					var deferred = $q.defer();//不可抽出
+					PLACEHODER.create(obj,
+						function(answer){
+							deferred.resolve(answer);
+						},
+						function(error){
+							deferred.resolve(error);
+						}
+					);
+					return deferred.promise;
+				},
+				remove: function(id){
+					var deferred = $q.defer();//不可抽出
+					PLACEHODER.remove({_id: id},
+						function(answer){
+							deferred.resolve(answer);
+						},
+						function(error){
+							deferred.resolve(error);
+						}
+					);
+					return deferred.promise;
+				},
+				update: function(obj){
+					var deferred = $q.defer();//不可抽出
+					PLACEHODER.update(obj,
+						function(answer){
+							deferred.resolve(answer);
+						},
+						function(error){
+							deferred.resolve(error);
+						}
+					);
+					return deferred.promise;
+				}
+			};
+		}
+	]);
+})(angular);

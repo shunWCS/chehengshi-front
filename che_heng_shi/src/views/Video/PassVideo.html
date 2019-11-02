@@ -1,0 +1,169 @@
+<div class="bg-light lter b-b wrapper-md flex justify-between">
+    <span class="m-n font-thin h2">{{vm.blockquote}}</span>
+</div>
+<div class="wrapper-md">
+
+    <div class="panel panel-default ">
+        <!-- Default panel contents -->
+        <div class="panel-heading">{{vm.blockquote}}</div>
+        <div class="row wrapper">
+            <div class="col-sm-5 col-md-3 m-b-xs"></div>
+            <div class="col-sm-5 col-md-3 m-b-xs"></div>
+            <div class="col-sm-5 col-md-3 m-b-xs"></div>
+        </div>
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-striped table-condensed m-b-none text-center">
+                <thead>
+                <tr>
+                    <th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)" ng-class="{sortable: column.sortable !== false}" colspan="{{column.colspan}}">
+                        {{column.label}}
+                        <i ng-if="column.name === vm.sort.column && vm.sort.direction" class="glyphicon {{vm.sort.direction|orderClass}}"></i>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td><input type="text" class="form-control" placeholder='发布人' ng-model="vm.filter.name" /></td>
+                    <td><input type="text" class="form-control" placeholder='标题' ng-model="vm.filter.title" /></td>
+                    <td></td>
+                    <td><input type="text" class="form-control" placeholder='联系电话' ng-model="vm.filter.phone" /></td>
+                    <td></td>
+                    <td><input type="text" class="form-control" placeholder='发布时间' ng-model="vm.filter.time" /></td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr ng-repeat="item in vm.items|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1|paging:vm.page.index:vm.page.size">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.videoUrl}}</td>
+                    <td>{{item.phone}}</td>
+                    <td>{{item.remark}}</td>
+                    <td>{{item.time}}</td>
+                    <td>
+							<span class="btn btn-success" data-toggle="modal" data-target="#updateModal" data-id="{{item.id}}">
+					    		详情
+					    	</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-md-3 col-xs-12">
+                    <select ng-model="vm.page.size" class="form-control" title="每页条目数" ng-options="pageSize for pageSize in [5, 20, 100]" style="margin: 18px 0;">
+                    </select>
+                </div>
+                <div class="col-md-9 col-xs-12">
+                    <pagination total-items="vm.items|size" ng-model="vm.page.index" max-size="5" items-per-page="vm.page.size" class="pagination-sm pull-right" boundary-links="true" rotate="false" num-pages="numPages">
+                    </pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+<!-- /.modal -->
+
+<div class="modal fade " id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!--修改-->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">分享详情</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="update" ng-submit="vm.update(vm.Item)">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">标题</label>
+                        <div class="col-md-8">
+                            <input class="form-control" ng-model="vm.Item.title" required disabled="true" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">发布人</label>
+                        <div class="col-md-8">
+                            <input class="form-control" ng-model="vm.Item.name" required disabled="true" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">联系电话</label>
+                        <div class="col-md-8">
+                            <input class="form-control" ng-model="vm.Item.phone" required  disabled="true" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">备注</label>
+                        <div class="col-md-8">
+                            <input class="form-control" ng-model="vm.Item.remark"  required disabled="true" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">发布时间</label>
+                        <div class="col-md-8">
+                            <input class="form-control" ng-model="vm.Item.time" required disabled="true" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">视频链接</label>
+                        <div class="col-md-8">
+                            <input class="form-control" ng-model="vm.Item.videoUrl" required disabled="true" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">正文内容</label>
+                        <div class="col-md-8">
+                            <div text-angular ng-model="vm.Item.introduce" class="btn-groups"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">视频图片</label>
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <input class="form-control" ng-model="vm.Item.banner" />
+                                <span class="input-group-btn">
+									<input type="file" class="filestyle" nv-file-select uploader="vm.uploader" data-target="Item.banner" ng-click="vm.setTarget($event)">
+								</span>
+                            </div>
+                        </div>
+                        <img class="img-responsive col-sm-8 col-sm-offset-2" ng-src="{{vm.Item.banner}}" alt="" ng-if="vm.Item.banner" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">审核备注</label>
+                        <div class="col-md-8">
+                            <input class="form-control" ng-model="vm.Item.applyRemark" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">视频</label>
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <input class="form-control" ng-model="vm.Item.video" />
+                                <span class="input-group-btn">
+									<input type="file" class="filestyle" nv-file-select uploader="vm.uploader" data-target="Item.video" ng-click="vm.setTarget($event)">
+								</span>
+                            </div>
+                        </div>
+                        <video class="img-responsive col-sm-8 col-sm-offset-2" controls="controls" ng-src="{{vm.videoUrlFun(vm.Item.video)}}" ng-if="vm.Item.video" />
+                    </div>
+                    <div ng-uploader></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="submit" class="btn  btn-md btn-success btn-addon" value="提交" form="update" ><i class="fa fa-arrow-circle-o-up"></i>审核通过</button>-->
+                <button type="button" class="btn btn-warning" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end修改-->
+</div>
+<!-- /.modal -->
+<!--end新增-->
+</div>
+<!-- /.modal -->

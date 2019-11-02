@@ -1,0 +1,211 @@
+<div class="bg-light lter b-b wrapper-md flex justify-between">
+	<span class="m-n font-thin h2">{{vm.blockquote}}</span>
+	<!--<button class="btn m-b-xs btn-md btn-info btn-addon" data-toggle="modal" data-target="#createModal"><i class="fa fa-plus"></i>新增</button>-->
+</div>
+<div class="wrapper-md">
+	<form class="form-horizontal" id="create" ng-submit="vm.create(vm.New)">
+		<div class="form-group">
+			<label class="control-label col-md-2">分类</label>
+			<div class="col-md-8">
+				<select class="form-control" ng-model="vm.New.productTypeId" ng-options="item.id as item.typeName for item in vm.typeList" required>
+					<option label="--请选择分类--"></option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">名称</label>
+			<div class="col-md-8">
+				<input class="form-control" ng-model="vm.New.name" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">描述</label>
+			<div class="col-md-8">
+				<input class="form-control" ng-model="vm.New.introduce" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">邮费</label>
+			<div class="col-md-8">
+				<input class="form-control" ng-model="vm.New.postage" type="number" step="0.01" min="0" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">排列</label>
+			<div class="col-md-8">
+				<input class="form-control" ng-model="vm.New.sort" type="number" step="1" min="0" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">点击</label>
+			<div class="col-md-8">
+				<input class="form-control" ng-model="vm.New.clicks" type="number" step="1" min="0" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">销量</label>
+			<div class="col-md-8">
+				<input class="form-control" ng-model="vm.New.sales" type="number" step="1" min="0" required />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">产品规格</label>
+			<div class="col-md-8 table-responsive">
+				<table class="table table-striped table-bordered ">
+					<thead>
+						<tr class="info">
+							<th>规格</th>
+							<th>价格</th>
+							<th>库存</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in vm.New.skuList" >
+							<td>{{item.name}}</td>
+							<td>{{item.price | currency:'￥'}}</td>
+							<td>{{item.stock}}</td>
+							<td>
+								<span class="btn btn-xs btn-danger" ng-click="vm.splice(vm.New.skuList,$index)">删除</span>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td><input class="form-control" ng-model="vm.sku.name" placeholder="规格"/></td>
+							<td><input class="form-control" type="number" step="0.01" min="0" ng-model="vm.sku.price" placeholder="价格"/></td>
+							<td><input class="form-control" type="number" step="1" min="0" ng-model="vm.sku.stock" placeholder="库存"/></td>
+							<td><button	class="btn btn-default" type="button" ng-click="vm.pill(vm.New.skuList, vm.sku)">新增产品规格</button></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">产品参数</label>
+			<div class="col-md-8 img-responsive">
+				<table class="table table-striped table-bordered ">
+					<thead>
+						<tr class="info">
+							<th>参数</th>
+							<th>内容</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in vm.New.productParameterList" >
+							<td>{{item.paramKey}}</td>
+							<td>{{item.paramValue}}</td>
+							<td>
+								<span class="btn btn-xs btn-danger" ng-click="vm.splice(vm.New.productParameterList,$index)">删除</span>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td><input class="form-control" ng-model="vm.param.paramKey" placeholder="参数"/></td>
+							<td><input class="form-control" ng-model="vm.param.paramValue" placeholder="内容"/></td>
+							<td><button	class="btn btn-default" type="button" ng-click="vm.pill(vm.New.productParameterList, vm.param)">新增产品参数</button></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">是否积分</label>
+			<div class="col-sm-10 ">
+				<label class="radio-inline i-checks">
+	              	<input type="radio" name="type" ng-value="1" ng-model="vm.New.type" required><i></i> 普通产品
+	            </label>
+				<label class="radio-inline i-checks">
+	              	<input type="radio" name="type" ng-value="2" ng-model="vm.New.type" required><i></i> 积分产品
+	            </label>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">是否推荐</label>
+			<div class="col-sm-10">
+				<label class="radio-inline i-checks">
+	              	<input type="radio" name="recommend" ng-value="1" ng-model="vm.New.recommend" required><i></i> 不推荐
+	            </label>
+				<label class="radio-inline i-checks">
+	              	<input type="radio" name="recommend" ng-value="2" ng-model="vm.New.recommend" required><i></i> 推荐
+	            </label>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2 control-label">商品主图</label>
+			<div class="col-md-8 flex row wrap">
+				<div class="col-md-6" ng-repeat="item in vm.New.bannerList">
+					<div class="clearfix text-center m-t">
+						<div class="inline">
+							<img ng-src="{{item}}" class="img-responsive relative" alt="...">
+								<img class="dismiss" alt=""
+									 ng-src="{{app.dismiss}}"  
+									 ng-click="vm.splice(vm.New.bannerList,$index)"/>
+							</img>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="clearfix text-center m-t">
+						<label class="inline" for="banner">
+							<img ng-src="{{app.uploader}}" class="img-responsive " alt="..." >
+							<input nv-file-select
+								class="filestyle" 
+								id="banner" 
+								type="file" 
+								ng-show="false"  
+								uploader="vm.uploader" 
+								data-target="New.banner" 
+								ng-click="vm.setTarget($event)">
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-md-2 control-label">商品详情</label>
+			<div class="col-md-8 flex row wrap">
+				<div class="col-md-6" ng-repeat="item in vm.New.detailImgList">
+					<div class="clearfix text-center m-t">
+						<div class="inline">
+							<img ng-src="{{item}}" class="img-responsive" alt="...">
+								<img class="dismiss" alt=""
+									ng-src="{{app.dismiss}}"  
+									ng-click="vm.splice(vm.New.detailImgList,$index)"/>
+							</img>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="clearfix text-center m-t">
+						<label class="inline" for="detailImg">
+							<img ng-src="{{app.uploader}}" class="img-responsive" alt="..." >
+							<input class="filestyle"
+								id="detailImg" 
+								type="file"  
+								ng-show="false" 
+								nv-file-select 
+								uploader="vm.uploader" 
+								data-target="New.detailImg" 
+								ng-click="vm.setTarget($event)">
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-8 col-md-offset-2">
+				<input class="btn btn-primary" type="submit" value="提交" />
+			</div>
+		</div>
+		<!--<div ng-uploader></div>-->
+	</form>
+</div>
+<!-- /.modal -->
+
+
+
+

@@ -1,0 +1,311 @@
+<!-- list -->
+<ul class="nav">
+
+	<li ng-class="{active:$state.includes('app.user')}">
+		<a href class="auto">
+			<span class="pull-right text-muted">
+		        <i class="fa fa-fw fa-angle-right text"></i>
+		        <i class="fa fa-fw fa-angle-down text-active"></i>
+		      </span>
+			<i class="glyphicon glyphicon-user"></i>
+			<span>会员管理</span>
+		</a>
+		<ul class="nav nav-sub dk">
+			<li class="nav-sub-header">
+				<a href>
+					<span>会员管理</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.user.membershipPackage">
+					<span>会员套餐</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.user.customer">
+					<span>用户列表</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.user.consultant">
+					<span>咨询师傅</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li ng-class="{active:$state.includes('app.news')}">
+		<a href class="auto">
+			<span class="pull-right text-muted">
+		        <i class="fa fa-fw fa-angle-right text"></i>
+		        <i class="fa fa-fw fa-angle-down text-active"></i>
+		      </span>
+			<i class="glyphicon glyphicon-bookmark"></i>
+			<span>资讯管理</span>
+		</a>
+		<ul class="nav nav-sub dk">
+			<li class="nav-sub-header">
+				<a href>
+					<span>资讯管理</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.news.list">
+					<span>资讯列表</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.news.listCourseNew">
+					<span>课程新闻</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li ng-class="{active:$state.includes('app.product')}">
+		<a href class="auto">
+			<span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+			<i class="glyphicon glyphicon-th-list"></i>
+			<span>产品管理</span>
+		</a>
+		<ul class="nav nav-sub dk">
+			<li class="nav-sub-header">
+				<a href>
+					<span>产品管理</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.product.type">
+					<span>产品类型</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.product.list">
+					<span>产品列表</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.product.integral">
+					<span>积分商城</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li ng-class="{active:$state.includes('app.video')}">
+		<a href class="auto">
+			<span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+			<i class="glyphicon glyphicon-film"></i>
+			<span>视频管理</span>
+		</a>
+		<ul class="nav nav-sub dk">
+			<li class="nav-sub-header">
+				<a href>
+					<span>视频管理</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.video.type">
+					<span>视频类型</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.video.list">
+					<span>视频列表</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li ng-class="{active:$state.includes('app.applyVideo')}">
+		<a href class="auto">
+			<span class="pull-right text-muted">
+		        <i class="fa fa-fw fa-angle-right text"></i>
+		        <i class="fa fa-fw fa-angle-down text-active"></i>
+		    </span>
+			<i class="glyphicon glyphicon-duplicate"></i>
+			<span>分享管理</span>
+		</a>
+		<ul class="nav nav-sub dk">
+			<li class="nav-sub-header">
+				<a href>
+					<span>分享管理</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.applyVideo.list">
+					<span>待审核列表</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.applyVideo.passList">
+					<span>已审核列表</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li ng-class="{active:$state.includes('app.file')}">
+		<a href class="auto">
+			<span class="pull-right text-muted">
+		        <i class="fa fa-fw fa-angle-right text"></i>
+		        <i class="fa fa-fw fa-angle-down text-active"></i>
+		    </span>
+			<i class="glyphicon glyphicon-duplicate"></i>
+			<span>文档管理</span>
+		</a>
+		<ul class="nav nav-sub dk">
+			<li class="nav-sub-header">
+				<a href>
+					<span>文档管理</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.file.type">
+					<span>文档类型</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.file.list">
+					<span>文档列表</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li ng-class="{active:$state.includes('app.course')}">
+		<a href class="auto">
+			<span class="pull-right text-muted">
+		        <i class="fa fa-fw fa-angle-right text"></i>
+		        <i class="fa fa-fw fa-angle-down text-active"></i>
+		    </span>
+			<i class="glyphicon glyphicon-book"></i>
+			<span>课程管理</span>
+		</a>
+		<ul class="nav nav-sub dk">
+			<li class="nav-sub-header">
+				<a href>
+					<span>课程管理</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.course.type">
+					<span>课程类型</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.course.list">
+					<span>课程列表</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.courseApply.list">
+					<span>报名人员</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li ng-class="{active:$state.includes('app.manufacturer')}">
+		<a href class="auto">
+			<span class="pull-right text-muted">
+		        <i class="fa fa-fw fa-angle-right text"></i>
+		        <i class="fa fa-fw fa-angle-down text-active"></i>
+		    </span>
+			<i class="glyphicon glyphicon-briefcase"></i>
+			<span>商家管理</span>
+		</a>
+		<ul class="nav nav-sub dk">
+			<li class="nav-sub-header">
+				<a href>
+					<span>商家管理</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.manufacturer.provider">
+					<span>供应商列表</span>
+				</a>
+			</li>
+			<!--<li ui-sref-active="active">
+				<a ui-sref="app.manufacturer.product">
+					<span>供应商城</span>
+				</a>
+			</li>-->
+			<li ui-sref-active="active">
+				<a ui-sref="app.manufacturer.factory">
+					<span>维修厂列表</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+
+
+	<!--<li class="hidden-folded padder m-t m-b-sm text-muted text-xs" >
+		<span>二级权限</span>
+	</li>-->
+	<li ng-class="{active:$state.includes('app.order')}">
+		<a href class="auto">
+			<span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+			<i class="glyphicon glyphicon-shopping-cart"></i>
+			<span>订单管理</span>
+		</a>
+		<ul class="nav nav-sub dk">
+			<li class="nav-sub-header">
+				<a href>
+					<span>订单管理</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.order.list">
+					<span>商品订单</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.order.video">
+					<span>视频订单</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.order.file">
+					<span>文档订单</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.order.integral">
+					<span>积分订单</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.order.member">
+					<span>会员订单</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+	<li ng-class="{active:$state.includes('app.config')}">
+		<a href class="auto">
+			<span class="pull-right text-muted">
+		        <i class="fa fa-fw fa-angle-right text"></i>
+		        <i class="fa fa-fw fa-angle-down text-active"></i>
+		     </span>
+			<i class="glyphicon glyphicon-cog"></i>
+			<span>配置管理</span>
+		</a>
+		<ul class="nav nav-sub dk">
+			<li class="nav-sub-header">
+				<a href>
+					<span>配置管理</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.config.config">
+					<span>配置管理</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+
+</ul>
+<!-- / list -->

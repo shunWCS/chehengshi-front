@@ -1,0 +1,105 @@
+<div class="bg-light lter b-b wrapper-md flex justify-between">
+	<span class="m-n font-thin h2">{{vm.blockquote}}</span>
+</div>
+<div class="wrapper-md">
+	<div class="panel panel-default ">
+		<div class="panel-heading">{{vm.blockquote}}</div>
+		<div class="table-responsive">
+			<table class="table table-striped table-bordered m-b-none">
+				<thead>
+					<tr>
+						<th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)" ng-class="{sortable: column.sortable !== false}" colspan="{{column.colspan}}">
+							{{column.label}}
+							<i ng-if="column.name === vm.sort.column && vm.sort.direction" class="glyphicon {{vm.sort.direction|orderClass}}"></i>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in vm.items|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1">
+						<td>{{item.id}}</td>
+						<td>{{item.orderDetailList[0].file.title}}</td>
+						<td>{{item.actualPrice | currency: '￥'}}</td>
+						<td>{{item.orderTime | date: 'yyyy-MM-dd HH:mm'}}</td>
+						<td>
+							<span class="btn btn-success" data-toggle="modal" data-target="#updateModal" 
+								data-id="{{item.id}}" data-openid="{{item.openId}}">
+					    		详情
+					    	</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="panel-footer">
+			<div class="row">
+				<div class="col-md-3 col-xs-12">
+					<select ng-model="vm.page.size" class="form-control" ng-change="vm.reLoad()" ng-options="pageSize for pageSize in [10, 50, 100]" style="margin: 18px 0;">
+					</select>
+				</div>
+				<div class="col-md-9 col-xs-12">
+					<pagination total-items="vm.pageTotal" ng-model="vm.page.index" max-size="5"  ng-click="vm.reLoad()" items-per-page="vm.page.size" class="pagination-sm pull-right" boundary-links="true" rotate="true" num-pages="numPages">
+					</pagination>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade " id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog " role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">订单详情</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" id="update" ng-submit="vm.update(vm.Item)">
+					<div class="form-group">
+						<dt class="control-label col-md-2">订单号</dt>
+						<p class="form-control-static col-md-8">{{vm.Item.id}}</p>
+					</div>
+					<div class="form-group">
+						<dt class="control-label col-md-2">商品</dt>
+						<p class="form-control-static col-md-8">{{vm.Item.orderDetailList[0].file.title}}</p>
+					</div>
+					<div class="form-group">
+						<dt class="control-label col-md-2">金额</dt>
+						<p class="form-control-static col-md-8">{{vm.Item.actualPrice| currency: '￥'}}</p>
+					</div>
+					<div class="form-group">
+						<dt class="control-label col-md-2">下单时间</dt>
+						<p class="form-control-static col-md-8">{{vm.Item.orderTime | date: 'yyyy-MM-dd HH-mm'}}</p>
+					</div>
+					
+					<!--<div class="hbox h-auto m-b-lg">
+						<div class="col text-center w-sm">
+							<div class="thumb-lg avatar inline">
+								<img ng-src="{{vm.User.headImg}}" ng-show="vm.User.headImg">
+							</div>
+						</div>
+						<div class="col v-middle h1 font-thin">
+							<div >{{vm.User.name}} </div>
+							<div >{{vm.User.nickName}}</div>
+						</div>
+					</div>-->
+					
+					<div class="form-group">
+						<dt class="control-label col-md-2">用户</dt>
+						<p class="form-control-static col-md-8">{{vm.User.name}}</p>
+					</div>
+					<div class="form-group">
+						<dt class="control-label col-md-2">微信昵称</dt>
+						<p class="form-control-static col-md-8">{{vm.User.nickName}}</p>
+					</div>
+					<div class="form-group">
+						<dt class="control-label col-md-2">联系方式</dt>
+						<p class="form-control-static col-md-8">{{vm.User.phone}}</p>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<span type="button" class="btn btn-warning" data-dismiss="modal">取消</span>
+			</div>
+		</div>
+	</div>
+</div>

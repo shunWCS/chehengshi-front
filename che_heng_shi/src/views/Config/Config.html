@@ -1,0 +1,164 @@
+<div class="bg-light lter b-b wrapper-md flex justify-between">
+	<span class="m-n font-thin h2">{{vm.blockquote}}</span>
+</div>
+<div class="wrapper-md">
+
+	<div class="panel panel-default ">
+
+
+		<ul class="nav nav-tabs tablist" role="tablist">
+			<span class="btn btn-success" data-toggle="modal" data-target="#updateModalOne" data-id="{{item.id}}">每消费一元能够得到多少积分</span>
+			<span class="btn btn-success" data-toggle="modal" data-target="#updateModalTow" data-id="{{item.id}}">单次购买视频/文档能看多少时间</span>
+			<span class="btn btn-success" data-toggle="modal" data-target="#updateModal3" data-id="{{item.id}}">商家入驻开关</span>
+			<span class="btn btn-success" data-toggle="modal" data-target="#updateModal4" data-id="{{item.id}}">用户入驻开关</span>
+			<span class="btn btn-success" data-toggle="modal" data-target="#updateModal5" data-id="{{item.id}}">是否显示收费开关</span>
+		</ul>
+
+
+	</div>
+</div>
+<div class="modal fade " id="updateModalOne" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<!--新增-->
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">每消费一元能够得到多少积分</h4>
+			</div>
+
+			<form class="form-horizontal sec" id="m1radio" ng-submit="vm.update1(vm.m1)">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">调整积分:</label>
+					<div class="col-md-8 col-md-offset-2">
+						<div class="input-group">
+							<input class="form-control" placeholder="每消费一元能够得到多少积分" type="number" min="0.01" max="1" step="0.01" ng-model="vm.m1.rate" required>
+
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="modal-footer">
+				<input type="submit" class="btn btn-primary" form="m1radio" value="提交修改"/>
+				<button type="button" class="btn btn-warning" data-dismiss="modal">取消修改</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade " id="updateModalTow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<!--第二个配置-->
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">单次购买视频/文档能看多少时间</h4>
+			</div>
+
+			<form class="form-horizontal sec" id="m2radio" ng-submit="vm.update2(vm.m2)">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">调整时间:</label>
+					<div class="col-md-8 col-md-offset-2">
+						<div class="input-group">
+							<input class="form-control" placeholder="单次购买视频/文档能看多少时间(小时)" type="number" min="0" step="1" ng-model="vm.m2.hour" required>
+
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="modal-footer">
+				<input type="submit" class="btn btn-primary" form="m2radio" value="提交修改"/>
+				<button type="button" class="btn btn-warning" data-dismiss="modal">取消修改</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade " id="updateModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<!--第三个配置-->
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">商家入驻开关</h4>
+			</div>
+
+			<form class="form-horizontal sec" id="m3radio" ng-submit="vm.update3(vm.m3)">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">商家入驻</label>
+					<div class="col-md-8">
+						<label class="radio-inline i-checks">
+							<input type="radio" name="recommend" ng-value="1" ng-model="vm.m3.rate" required><i></i> 打开
+						</label>
+						<label class="radio-inline i-checks">
+							<input type="radio" name="recommend" ng-value="0" ng-model="vm.m3.rate" required><i></i> 关闭
+						</label>
+					</div>
+				</div>
+			</form>
+			<div class="modal-footer">
+				<input type="submit" class="btn btn-primary" form="m3radio" value="提交修改"/>
+				<button type="button" class="btn btn-warning" data-dismiss="modal">取消修改</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade " id="updateModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<!--第四个配置-->
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">用户入驻开关</h4>
+			</div>
+
+			<form class="form-horizontal sec" id="m4radio" ng-submit="vm.update4(vm.m4)">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">用户入驻</label>
+					<div class="col-md-8">
+						<label class="radio-inline i-checks">
+							<input type="radio" name="recommend" ng-value="1" ng-model="vm.m4.rate" required><i></i> 打开
+						</label>
+						<label class="radio-inline i-checks">
+							<input type="radio" name="recommend" ng-value="0" ng-model="vm.m4.rate" required><i></i> 关闭
+						</label>
+					</div>
+				</div>
+			</form>
+			<div class="modal-footer">
+				<input type="submit" class="btn btn-primary" form="m4radio" value="提交修改"/>
+				<button type="button" class="btn btn-warning" data-dismiss="modal">取消</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade " id="updateModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<!--第五个配置-->
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">是否显示收费开关</h4>
+			</div>
+
+			<form class="form-horizontal sec" id="m5radio" ng-submit="vm.update5(vm.m5)">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">是否收费:</label>
+					<div class="col-md-8">
+						<label class="radio-inline i-checks">
+							<input type="radio" name="recommend" ng-value="1" ng-model="vm.m5.rate" required><i></i> 显示
+						</label>
+						<label class="radio-inline i-checks">
+							<input type="radio" name="recommend" ng-value="0" ng-model="vm.m5.rate" required><i></i> 不显示
+						</label>
+					</div>
+				</div>
+			</form>
+			<div class="modal-footer">
+				<input type="submit" class="btn btn-primary" form="m5radio" value="提交修改"/>
+				<button type="button" class="btn btn-warning" data-dismiss="modal">取消</button>
+			</div>
+		</div>
+	</div>
+</div>

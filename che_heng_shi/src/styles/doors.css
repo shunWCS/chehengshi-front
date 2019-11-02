@@ -1,0 +1,26 @@
+.width{
+	width: 100%;
+}
+.access{
+	/*https://dingguan-1257007615.cos.ap-guangzhou.myqcloud.com/Vehicle/1547793026595.jpg*/
+	background-image: url(http://dingguan.oss-cn-shenzhen.aliyuncs.com/alpha/155235664243600245.png);
+	background-repeat: no-repeat;
+    background-size: cover ;
+    background-position:center;
+}
+.text-white{
+	color: white;
+}
+.relative{
+	position: relative;
+}
+.dismiss{
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	width: 25px;
+	height: 25px;
+}
+.sec{
+	padding: 20px 0;
+}

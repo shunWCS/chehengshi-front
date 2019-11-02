@@ -1,0 +1,142 @@
+<div class="bg-light lter b-b wrapper-md flex justify-between">
+	<span class="m-n font-thin h2">轮播图管理</span>
+	<button class="btn m-b-xs btn-md btn-info btn-addon" data-toggle="modal" data-target="#createModal"><i class="fa fa-plus"></i>新增</button>
+</div>
+<div class="wrapper-md">
+	<div class="flex wrap row">
+
+		<div class="col-lg-4" ng-repeat="item in vm.items|paging:vm.page.index:vm.page.size">
+			<div class="panel ">
+				<div class="panel-heading wrapper-xs bg-primary no-border"></div>
+				<div class="panel-body">
+					<div class="clearfix text-center m-t">
+						<img ng-src="{{item.banner}}" class="img-responsive" alt="..." style="margin: 0 auto;">
+					</div>
+				</div>
+				<div class="panel-footer text-center flex justify-between">
+					<button class="btn m-b-xs btn-md btn-warning btn-addon" data-toggle="modal" data-target="#updateModal" data-id="{{item.id}}"><i class="fa fa-edit"></i>修改</button>
+					<button class="btn m-b-xs btn-md btn-danger btn-addon" data-id="{{item.id}}" data-toggle="modal" data-target="#removeModal"><i class="fa fa-trash-o"></i>删除</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<select ng-model="vm.page.size" class="form-control" title="每页条目数" ng-options="pageSize for pageSize in [6, 20, 100]" style="margin: 18px 0;">
+			</select>
+		</div>
+		<div class="col-md-9">
+			<pagination total-items="vm.items|size" ng-model="vm.page.index" max-size="5" items-per-page="vm.page.size" class="pagination-sm pull-right" boundary-links="true">
+			</pagination>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<!--新增-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">新增</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" id="create" ng-submit="vm.create(vm.New)">
+					<div class="form-group">
+						<label class="col-md-2 control-label">排序</label>
+						<div class="col-md-8">
+							<input type="number" min="1" class="form-control" ng-model="vm.New.sort" placeholder="排序" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">轮播图</label>
+						<div class="col-md-8">
+							<input type="file" class="filestyle" nv-file-select uploader="vm.uploader" data-target="New" ng-click="vm.setTarget($event)">
+						</div>
+						<img class="img-responsive col-sm-8 col-sm-offset-2" ng-src="{{vm.New.banner}}" alt="" /> 
+					</div>
+					<div ng-uploader></div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" class="btn btn-primary" form="create" value="提交" />
+				<button type="button" class="btn btn-warning" data-dismiss="modal">取消</button>
+			</div>
+		</div>
+		<!--end新增-->
+	</div>
+</div>
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<!--修改-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">修改</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" id="update" ng-submit="vm.update(vm.Item)">
+					<div class="form-group">
+						<label class="col-md-2 control-label">排序</label>
+						<div class="col-md-8">
+							<input type="number" min="1" class="form-control" ng-model="vm.Item.sort" placeholder="排序" required/>
+						</div>
+					</div>
+					<!--<div class="form-group">
+						<label class="col-md-2 control-label">轮播图</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<input type="text" class="form-control" ng-model="vm.Item.img" placeholder="轮播图" required>
+								<input type="file" id="itemimg" ng-hide="true" nv-file-select uploader="vm.uploader" ng-click="vm.key = 'itemimg'" />
+								<span class="input-group-btn">
+					        	<button class="btn btn-default" type="button" onclick="$('#itemimg').click()">
+						       		<i class="glyphicon glyphicon-folder-open"></i>
+					        		图片上传
+					        	</button>
+					      	</span>
+							</div>
+							<img class="img-responsive col-sm-8 col-sm-offset-2" src="{{vm.Item.img}}" alt="" />
+						</div>
+					</div>-->
+					<div class="form-group">
+						<label class="col-md-2 control-label">轮播图</label>
+						<div class="col-md-8">
+							<input type="file" class="filestyle" nv-file-select uploader="vm.uploader" data-target="Item" ng-click="vm.setTarget($event)">
+						</div>
+						<img class="img-responsive col-sm-8 col-sm-offset-2" ng-src="{{vm.Item.banner}}" alt="" /> 
+					</div>
+					<div ng-uploader></div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" class="btn btn-primary" form="update" value="提交" />
+				<button type="button" class="btn btn-warning" data-dismiss="modal">取消</button>
+			</div>
+		</div>
+		<!--end修改-->
+	</div>
+</div>
+<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<!--删除-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">删除</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" id="delete" ng-submit="vm.remove(vm.itemId)">
+					<div class="form-group">
+						<label class="col-sm-2 control-label"></label> 是否要删除？
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" class="btn btn-danger" form="delete" value="删除" />
+				<button type="button" class="btn btn-warning" data-dismiss="modal">取消</button>
+			</div>
+		</div>
+		<!--end删除-->
+	</div>
+</div>

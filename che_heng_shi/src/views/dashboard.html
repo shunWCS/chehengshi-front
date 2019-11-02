@@ -1,0 +1,43 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  ">
+	<!-- main -->
+	<div class="col">
+		<!-- main header -->
+		<div class="bg-light lter b-b wrapper-md">
+			<div class="row">
+				<div class="col-sm-6 col-xs-12">
+					<h1 class="m-n font-thin h3 text-black">欢迎来到{{app.name}}管理后台</h1>
+					<small class="text-muted">鼎冠网络技术支持</small>
+				</div>
+			</div>
+		</div>
+		<!-- / main header -->
+		<div class="wrapper-md">
+
+			<div class="panel panel-default ">
+				<!-- Default panel contents -->
+				<div class="panel-heading">{{vm.blockquote}}</div>
+				<form class="form-horizontal" ng-submit="vm.update(vm.Item)">
+					<div class="form-group">
+						<label class="control-label col-md-2">账户</label>
+						<p class="form-control-static col-md-8"> {{vm.Item.userName}}</p>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-2">密码</label>
+						<div class="col-md-8">
+							<input class="form-control " ng-model="vm.Item.password" type="password" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-8">
+							<input class="btn btn-warning" type="submit" value="修改" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+		

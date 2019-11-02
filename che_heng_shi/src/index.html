@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>鼎冠网络管理后台</title>
+		<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" /><!--with min-->
+		<link rel="stylesheet" href="styles/animate.css" />
+		<link rel="stylesheet" href="styles/font-awesome.min.css" />
+		<link rel="stylesheet" href="styles/simple-line-icons.css" />
+		<link rel="stylesheet" href="styles/font.css" />
+		<link rel="stylesheet" href="styles/app.css" />
+		<link rel="stylesheet" href="styles/flex.css" />
+		<link rel="stylesheet" href="styles/doors.css" />
+		<link rel="stylesheet" href="styles/datetimepicker/bootstrap-datetimepicker.min.css" />
+		<link rel="icon" href="data:image/ico;base64,aWNv">
+	</head>
+
+	<body ng-controller="AppCtrl" ng-class="{access:$state.includes('access')}">
+		<div class="app" id="app" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
+
+		<!-- jQuery -->
+		<script src="lib/jquery/dist/jquery.min.js" charset="UTF-8"></script>
+
+		<!-- Angular -->
+		<script src="lib/angular/angular.min.js" charset="UTF-8"></script>
+		<script src="lib/angular-animate/angular-animate.min.js"></script>
+		<script src="lib/angular-cookies/angular-cookies.min.js"></script>
+		<script src="lib/angular-resource/angular-resource.min.js"></script>
+		<script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="lib/angular-ui-router/release/stateEvents.min.js"></script>
+		<script src="lib/angular-file-upload/dist/angular-file-upload.min.js"></script>
+
+		<!-- bootstrap -->
+		<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+		<script src="lib/modules/textAngular/textAngular.min.js"></script>
+		<script src="lib/modules/file/bootstrap-filestyle.min.js"></script>
+		<script src="lib/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+		<script src="lib/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+
+		<!-- lazyload -->
+		<script src="lib/oclazyload/ocLazyLoad.min.js"></script>
+
+		<!-- App -->
+		<script src="scripts/app.js"></script>
+		<script src="scripts/main.js"></script>
+		<script src="scripts/services/ui-load.js"></script>
+		<script src="scripts/config.lazyload.js"></script>
+		<!--<script src="scripts/interceptors/httpInterceptor.js"></script>-->
+
+		<!--Config-->
+		<script src="scripts/config/api.js"></script>
+		<script src="scripts/config/config.js"></script>
+		<script src="scripts/config/_service.js"></script>
+		<script src="scripts/config/_controller.js"></script>
+		<script src="scripts/config/resourse.js"></script>
+		<script src="scripts/config/scHelper.js"></script>
+		<script src="scripts/config/ui-bootstrap-locale_zh-cn.js"></script>
+		<script src="scripts/config/router.js"></script>
+		<!--<script src="scripts/config/interceptor.js"></script>-->
+
+		<!--Directives-->
+		<script src="scripts/directives/uploader.js"></script>
+		<script src="scripts/directives/setnganimate.js"></script>
+		<script src="scripts/directives/ui-butterbar.js"></script>
+		<script src="scripts/directives/ui-focus.js"></script>
+		<script src="scripts/directives/ui-fullscreen.js"></script>
+		<script src="scripts/directives/ui-jq.js"></script>
+		<script src="scripts/directives/ui-module.js"></script>
+		<script src="scripts/directives/ui-nav.js"></script>
+		<script src="scripts/directives/ui-scroll.js"></script>
+		<script src="scripts/directives/ui-shift.js"></script>
+		<script src="scripts/directives/ui-toggleclass.js"></script>
+		<script src="scripts/directives/ui-validate.js"></script>
+
+		<!--Filters-->
+		<script src="scripts/filters/orderClass.js"></script>
+		<script src="scripts/filters/paging.js"></script>
+		<script src="scripts/filters/size.js"></script>
+		<script src="scripts/filters/manufacturer.js"></script>
+		<script src="scripts/filters/status.js"></script>
+		<script src="scripts/filters/JsonParse.js"></script>
+		<script src="scripts/filters/current.js"></script>
+		<script src="scripts/filters/unicodeToString.js"></script>
+
+		<script src="scripts/signin.js"></script>
+		<script src="scripts/lockme.js"></script>
+
+		<!--Services-->
+		<script src="scripts/services/Admin/Admin.js"></script>
+		<script src="scripts/services/Order/Order.js"></script>
+		<script src="scripts/services/Manufacturer/Manufacturer.js"></script>
+		<script src="scripts/services/Manufacturer/ManufacturerGive.js"></script>
+		<script src="scripts/services/Config/Swiper.js"></script>
+		<script src="scripts/services/Config/News.js"></script>
+		<script src="scripts/services/Config/Config.js"></script>
+		<script src="scripts/services/User/MembershipPackage.js"></script>
+		<script src="scripts/services/User/Browse.js"></script>
+		<script src="scripts/services/User/IntegralFlow.js"></script>
+		<script src="scripts/services/User/User.js"></script>
+		<script src="scripts/services/Product/Product.js"></script>
+		<script src="scripts/services/Product/ProductParameter.js"></script>
+		<script src="scripts/services/Product/ProductType.js"></script>
+		<script src="scripts/services/Product/Sku.js"></script>
+		<script src="scripts/services/File/File.js"></script>
+		<script src="scripts/services/File/FileType.js"></script>
+		<script src="scripts/services/Video/Video.js"></script>
+		<script src="scripts/services/Video/VideoType.js"></script>
+		<script src="scripts/services/Course/CourseType.js"></script>
+        <script src="scripts/services/Course/Course.js"></script>
+		<script src="scripts/services/Course/CourseApply.js"></script>
+		<script src="scripts/services/Video/applyVideo.js"></script>
+		<script src="scripts/services/Config/CourseNews.js"></script>
+		<script src="scripts/services/Video/PassVideo.js"></script>
+
+		<!--Controllers-->
+		<script src="scripts/controllers/Admin/Admin.js"></script>
+		<script src="scripts/controllers/Order/Order.js"></script>
+		<script src="scripts/controllers/Order/fileOrder.js"></script>
+		<script src="scripts/controllers/Order/integralOrder.js"></script>
+		<script src="scripts/controllers/Order/videoOrder.js"></script>
+		<script src="scripts/controllers/Order/memberOrder.js"></script>
+		<script src="scripts/controllers/Manufacturer/Factory.js"></script>
+		<script src="scripts/controllers/Manufacturer/Provider.js"></script>
+		<script src="scripts/controllers/Manufacturer/ProviderProductCtrl.js"></script>
+		<script src="scripts/controllers/Config/Swiper.js"></script>
+		<script src="scripts/controllers/Config/News.js"></script>
+		<script src="scripts/controllers/Config/Config.js"></script>
+		<script src="scripts/controllers/User/MembershipPackage.js"></script>
+		<script src="scripts/controllers/User/Customer.js"></script>
+		<script src="scripts/controllers/User/Consultant.js"></script>
+		<script src="scripts/controllers/Product/Integral.js"></script>
+		<script src="scripts/controllers/Product/Product.js"></script>
+		<script src="scripts/controllers/Product/ProductNew.js"></script>
+		<script src="scripts/controllers/Product/ProductType.js"></script>
+		<script src="scripts/controllers/Product/Sku.js"></script>
+		<script src="scripts/controllers/File/File.js"></script>
+		<script src="scripts/controllers/File/FileType.js"></script>
+		<script src="scripts/controllers/Video/Video.js"></script>
+		<script src="scripts/controllers/Video/VideoType.js"></script>
+        <script src="scripts/controllers/Course/CourseType.js"></script>
+		<script src="scripts/controllers/Course/Course.js"></script>
+		<script src="scripts/controllers/Course/CourseApply.js"></script>
+		<script src="scripts/controllers/Video/applyVideo.js"></script>
+		<script src="scripts/controllers/Config/CourseNews.js"></script>
+		<script src="scripts/controllers/Video/PassVideo.js"></script>
+
+		<!--<script src="//cdn.jsdelivr.net/npm/eruda"></script>
+		<script>
+			eruda.init();
+			console.log('控制台打印信息');
+		</script>-->
+	</body>
+
+</html>
