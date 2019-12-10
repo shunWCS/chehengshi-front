@@ -205,6 +205,35 @@
 			</li>
 		</ul>
 	</li>
+
+	<li ng-class="{active:$state.includes('app.posterBanner')}">
+		<a href class="auto">
+			<span class="pull-right text-muted">
+		        <i class="fa fa-fw fa-angle-right text"></i>
+		        <i class="fa fa-fw fa-angle-down text-active"></i>
+		    </span>
+			<i class="glyphicon glyphicon-duplicate"></i>
+			<span>轮播图管理</span>
+		</a>
+		<ul class="nav nav-sub dk">
+			<li class="nav-sub-header">
+				<a href>
+					<span>轮播图设置</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.posterBanner.type">
+					<span>轮播类型</span>
+				</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="app.posterBanner.list">
+					<span>设置列表</span>
+				</a>
+			</li>
+		</ul>
+	</li>
+
 	<li ng-class="{active:$state.includes('app.manufacturer')}">
 		<a href class="auto">
 			<span class="pull-right text-muted">

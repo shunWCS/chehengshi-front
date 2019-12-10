@@ -1,0 +1,174 @@
+<div class="bg-light lter b-b wrapper-md flex justify-between">
+    <span class="m-n font-thin h2">{{vm.blockquote}}</span>
+    <button class="btn m-b-xs btn-md btn-info btn-addon" data-toggle="modal" data-target="#createModal"><i class="fa fa-plus"></i>新增</button>
+</div>
+<div class="wrapper-md">
+
+    <div class="panel panel-default ">
+        <!-- Default panel contents -->
+        <div class="panel-heading">{{vm.blockquote}}</div>
+
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-striped m-b-none">
+                <thead>
+                <tr>
+                    <th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)" ng-class="{sortable: column.sortable !== false}" colspan="{{column.colspan}}">
+                        {{column.label}}
+                        <i ng-if="column.name === vm.sort.column && vm.sort.direction" class="glyphicon {{vm.sort.direction|orderClass}}"></i>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <!--<td><input type="text" class="form-control" placeholder="ID" ng-model="vm.filter.id" /></td>-->
+                    <td><input type="text" class="form-control" placeholder='类型' ng-model="vm.filter.typeName" /></td>
+                    <!--<td><input type="text" class="form-control" placeholder='排列' ng-model="vm.filter.sort" /></td>-->
+                    <td colspan="2"></td>
+                </tr>
+                <tr ng-repeat="item in vm.items|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1|paging:vm.page.index:vm.page.size">
+                    <!--<td>{{item.id}}</td>-->
+                    <td>{{item.sort}}</td>
+                    <td>{{item.typeValue}}</td>
+                    <td>{{item.typeName}}</td>
+                    <td>
+							<span class="btn btn-warning" data-toggle="modal" data-target="#updateModal" data-id="{{item.id}}">
+				    		编辑
+				    	</span>
+                    </td>
+                    <td>
+							<span class="btn btn-danger" data-toggle="modal" data-target="#removeModal" data-id="{{item.id}}">
+				    		删除
+				    	</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-md-3 col-xs-12">
+                    <select ng-model="vm.page.size" class="form-control" title="每页条目数" ng-options="pageSize for pageSize in [5, 20, 100]" style="margin: 18px 0;">
+                    </select>
+                </div>
+                <div class="col-md-9 col-xs-12">
+                    <pagination total-items="vm.items|size" ng-model="vm.page.index" max-size="5"
+                                items-per-page="vm.page.size" class="pagination-sm pull-right" boundary-links="true"
+                                rotate="false" num-pages="numPages">
+                    </pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade " id="createModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!--新增-->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新增</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="create" ng-submit="vm.create(vm.New)">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">中文类型</label>
+                        <div class="col-md-8">
+                            <input class="form-control" ng-model="vm.New.typeName" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">英文类型</label>
+                        <div class="col-md-8">
+                            <input class="form-control" ng-model="vm.New.typeValue" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">排序</label>
+                        <div class="col-md-8">
+                            <input class="form-control" ng-model="vm.New.sort" required />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" value="提交" form="create"/>
+                <span class="btn btn-info" ng-click="vm.reset()">重置</span>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end新增-->
+</div>
+<!-- /.modal -->
+
+<div class="modal fade " id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!--修改-->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">修改</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="update" ng-submit="vm.update(vm.Item)">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">中文类型</label>
+                        <div class="col-md-8">
+                            <input class="form-control" ng-model="vm.Item.typeName" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">英文类型</label>
+                        <div class="col-md-8">
+                            <input class="form-control" ng-model="vm.Item.typeValue" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">排序</label>
+                        <div class="col-md-8">
+                            <input class="form-control" ng-model="vm.Item.sort" required />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" value="提交" form="update"/>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end修改-->
+</div>
+<!-- /.modal -->
+
+<div class="modal fade " id="removeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!--删除-->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">删除</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="remove" ng-submit="vm.remove(vm.itemId)">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label> 是否要删除？
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-danger" value="提交" form="remove"/>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end新增-->
+</div>
+<!-- /.modal -->

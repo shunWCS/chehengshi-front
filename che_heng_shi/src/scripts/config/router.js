@@ -173,6 +173,31 @@ angular.module('app')
 						}
 					})
 
+					.state('app.posterBanner', {
+						url: '/posterBanner',
+						template: '<div ui-view></div>'
+					})
+					.state('app.posterBanner.type', {
+						url: '/type',
+						controller: 'PosterTypeCtrl',
+						templateUrl: 'views/banner/PosterType.html',
+					})
+					.state('app.posterBanner.list', {
+						url: '/list/:type',
+						params: {
+							'type': null
+						},
+						controller: 'PosterBannerCtrl',
+						templateUrl: 'views/banner/PosterBanner.html',
+						resolve: {
+							deps: ['$ocLazyLoad',
+								function($ocLazyLoad) {
+									return $ocLazyLoad.load('textAngular')
+								}
+							]
+						}
+					})
+
 					.state('app.user', {
 						url: '/user',
 						template: '<div ui-view></div>'
