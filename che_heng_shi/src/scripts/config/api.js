@@ -39,4 +39,7 @@ CourseTypeURL = host + 'courseType',
 CourseApplyURL = host + 'courseApply',
 ShareVideoUrl = host + 'applyVideo',
 CourseNewsURL = host + 'courseApply/newList',
-PassVideoUrl = host + 'passVideo'
+PassVideoUrl = host + 'passVideo',
+
+PosterTypeURL = host + 'posterType',
+PosterBannerURL = host + 'posterBanner'
