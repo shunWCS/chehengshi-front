@@ -5,9 +5,9 @@
         function($resource,$q){
             var PosterBanner = $resource(PosterBannerURL+'/:_id',{_id:'@_id'});
             return {
-                getList: function(params){
+                getList: function(typeValue){
                     var deferred = $q.defer();//不可抽出
-                    PosterBanner.get(params,
+                    PosterBanner.get(typeValue,
                         function(answer){
                             deferred.resolve(answer.data);
                         },

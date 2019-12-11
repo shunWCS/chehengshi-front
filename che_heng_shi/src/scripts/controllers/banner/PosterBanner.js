@@ -50,6 +50,9 @@
                 vm.whenType = function(){
                     $rootScope.$state.go('app.posterBanner.list',{type: vm.type})
                 };
+                vm.whenType02 = function(){
+                    PosterBanner.getList({typeValue: vm.New.typeValue}).then(function(answer){vm.items = answer});
+                };
 
                 vm.setTarget = function($event){
                     vm.target = $event.currentTarget.dataset.target;
