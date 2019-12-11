@@ -30,8 +30,8 @@
                 <tr ng-repeat="item in vm.items|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1|paging:vm.page.index:vm.page.size">
                     <!--<td>{{item.id}}</td>-->
                     <td>{{item.sort}}</td>
-                    <td>{{item.typeValue}}</td>
                     <td>{{item.typeName}}</td>
+                    <td>{{item.typeValue}}</td>
                     <td>
 							<span class="btn btn-warning" data-toggle="modal" data-target="#updateModal" data-id="{{item.id}}">
 				    		编辑
