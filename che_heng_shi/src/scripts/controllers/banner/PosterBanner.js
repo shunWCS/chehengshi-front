@@ -40,7 +40,6 @@
                     {label: '#编号',name: 'refId',type: 'string'},
                     {label: '标题',name: 'title',type: 'string'},
                     {label: '类型中文名',name: 'typeName',type: 'string'},
-                    {label: '类型英文名',name: 'typeValue',type: 'string'},
                     {label: '是否首页轮播',name: 'isFirst',type: 'string'},
                     {label: '创建时间',name: 'createTime',type: 'string'},
                     {label: '修改时间',name: 'editTime',type: 'string'},
