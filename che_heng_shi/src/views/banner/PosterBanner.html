@@ -49,13 +49,13 @@
 
                     <td>
 							<span class="btn btn-warning" data-toggle="modal" data-target="#updateModal" data-id="{{item.refId}},{{item.typeValue}}">
-					    		设置轮播图
+					    		修改
 					    	</span>
                     </td>
 
                     <td>
 							<span class="btn btn-danger" data-toggle="modal" data-target="#removeModal" data-id="{{item.refId}}">
-					    		删除轮播图
+					    		删除
 					    	</span>
                     </td>
                 </tr>
@@ -91,7 +91,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-2">轮播图分类</label>
                         <div class="col-md-8">
-                            <select class="form-control" ng-model="vm.New.typeValue" ng-options="item.typeValue as item.typeName for item in vm.typeList" ng-change="vm.whenType02(vm.New.typeValue)">
+                            <select class="form-control" ng-model="vm.New.typeValue" ng-options="item.typeValue as item.typeName for item in vm.typeList" ng-change="vm.whenType02(vm.New.typeValue,'pullList')">
                                 <option label="--请选择分类--"></option>
                             </select>
                         </div>
@@ -99,8 +99,8 @@
                     <div class="form-group">
                         <label class="control-label col-md-2">关联内容</label>
                         <div class="col-md-8">
-                            <select class="form-control" ng-model="vm.New.refId" ng-options="item.title as item.title for item in vm.items">
-                                <option label="--请选择关联内容--"></option>
+                            <select class="form-control" ng-model="vm.New.refId" ng-options="item.refId as item.title for item in vm.pullItems">
+                                <option label="--请选择关联内容--">{</option>
                             </select>
                         </div>
                     </div>
