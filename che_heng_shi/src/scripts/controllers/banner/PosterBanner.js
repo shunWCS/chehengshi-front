@@ -37,7 +37,8 @@
                     }
                 };
                 vm.columns = [
-                    {label: '#编号',name: 'refId',type: 'string'},
+                    {label: '主键ID',name: 'id',type: 'string'},
+                    {label: '关联编号',name: 'refId',type: 'string'},
                     {label: '标题',name: 'title',type: 'string'},
                     {label: '类型中文名',name: 'typeName',type: 'string'},
                     {label: '是否首页轮播',name: 'isFirst',type: 'string'},

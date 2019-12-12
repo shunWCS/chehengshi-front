@@ -35,9 +35,11 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
                     <td colspan="2"></td>
                 </tr>
                 <tr ng-repeat="item in vm.items|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1|paging:vm.page.index:vm.page.size">
+                    <td>{{item.id}}</td>
                     <td>{{item.refId}}</td>
                     <td>{{item.title}}</td>
                     <td>{{item.typeName}}</td>
@@ -46,13 +48,13 @@
                     <td>{{item.editTime | date: 'yyyy-MM-dd HH-mm'}}</td>
 
                     <td>
-							<span class="btn btn-warning" data-toggle="modal" data-target="#updateModal" data-id="{{item.refId}},{{item.typeValue}}">
+							<span class="btn btn-warning" data-toggle="modal" data-target="#updateModal" data-id="{{item.id}},{{item.typeValue}}">
 					    		修改
 					    	</span>
                     </td>
 
                     <td>
-							<span class="btn btn-danger" data-toggle="modal" data-target="#removeModal" data-id="{{item.refId}}">
+							<span class="btn btn-danger" data-toggle="modal" data-target="#removeModal" data-id="{{item.id}}">
 					    		删除
 					    	</span>
                     </td>
